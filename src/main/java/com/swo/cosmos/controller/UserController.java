@@ -21,13 +21,13 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/")
-    public ResponseEntity<List<User>> getPosts() {
+    public ResponseEntity<List<User>> getUsers() {
         List<User> users = this.userService.getUsers();
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getPostById(@PathVariable String id) {
+    public ResponseEntity<User> getUserById(@PathVariable String id) {
         Optional<User> user = this.userService.getUser(id);
         if (!user.isPresent()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
